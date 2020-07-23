@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+nav{
+    background-color: #024d64;
+}
+
+nav .nav-link, .navbar-brand{
+    color: white;
+}
+
+nav .nav-link:hover{
+    color: white;
+    text-decoration: overline;
+    
+}
