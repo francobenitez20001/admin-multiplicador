@@ -21,19 +21,16 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item active">
-                        <Link className="nav-link" to="/">Autores <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/autores">Autores <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Notas</Link>
+                        <Link className="nav-link" to="/notas">Notas</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Articulos</Link>
+                        <Link className="nav-link" to="/categorias">Categorias</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Categorias</Link>
-                    </li>
-                    <li className="nav-item">
-                        {(user)?<button className="btn btn-danger" onClick={()=>logout()}>Salir</button>:<button className="nav-link btn btn-info" to="/login">Iniciar sesión</button>}
+                        {(user)?<button className="btn btn-danger" onClick={()=>logout()}>Salir</button>:<Link className="nav-link btn btn-info" to="/login">Iniciar sesión</Link>}
                     </li>
                 </ul>
             </div>
