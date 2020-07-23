@@ -30,7 +30,7 @@ const Navbar = () => {
                         <Link className="nav-link" to="/categorias">Categorias</Link>
                     </li>
                     <li className="nav-item">
-                        {(user)?<button className="btn btn-danger" onClick={()=>logout()}>Salir</button>:<Link className="nav-link btn btn-info" to="/login">Iniciar sesión</Link>}
+                        {(user)?<button className="btn btn-danger" onClick={()=>logout()}>Salir</button>:<Link className="btn btn-info" to="/login">Iniciar sesión</Link>}
                     </li>
                 </ul>
             </div>
