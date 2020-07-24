@@ -3,6 +3,7 @@ import Loader from '../../components/Loader/Loader';
 import FormEditAutor from '../../components/forms/EditAutor';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
+import { useUser } from 'reactfire';
 
 const EditAutor = (props) => {
     const [request, setRequest] = useState({
@@ -15,7 +16,10 @@ const EditAutor = (props) => {
 
     useEffect(() => {
         getAutor();
-    }, [])
+    }, []);
+
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const getAutor = async()=>{
         try {

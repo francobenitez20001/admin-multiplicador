@@ -3,6 +3,7 @@ import Loader from '../../components/Loader/Loader';
 import FormEditNota from '../../components/forms/EditNota';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
+import { useUser } from 'reactfire';
 
 const EditNota = (props) => {
     const [request, setRequest] = useState({
@@ -16,7 +17,9 @@ const EditNota = (props) => {
 
     useEffect(() => {
         getDatos();
-    }, [])
+    }, []);
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const getDatos = async()=>{
         await getNota();    

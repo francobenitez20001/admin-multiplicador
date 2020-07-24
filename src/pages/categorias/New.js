@@ -3,6 +3,7 @@ import Loader from '../../components/Loader/Loader';
 import FormAddCategoria from '../../components/forms/AddCategoria';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
+import { useUser } from 'reactfire';
 
 const NewCategoria = (props) => {
     const [request, setRequest] = useState({
@@ -13,6 +14,9 @@ const NewCategoria = (props) => {
     const [formValues, setFormValues] = useState({
         categoria:''
     });
+
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const handleChange = event=>{
         setFormValues({

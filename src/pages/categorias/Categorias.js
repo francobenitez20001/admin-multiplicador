@@ -4,6 +4,7 @@ import Loader from '../../components/Loader/Loader';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useUser } from 'reactfire';
 const Categorias = () => {
     const MySwal = withReactContent(Swal)
     const [request, setRequest] = useState({
@@ -14,7 +15,10 @@ const Categorias = () => {
 
     useEffect(() => {
         getCategorias();
-    }, [])
+    }, []);
+
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const getCategorias = async()=>{
         try {

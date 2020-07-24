@@ -3,6 +3,7 @@ import Loader from '../../components/Loader/Loader';
 import FormEditCategoria from '../../components/forms/EditCategoria';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
+import { useUser } from 'reactfire';
 
 const EditCategoria = (props) => {
     const [request, setRequest] = useState({
@@ -15,7 +16,9 @@ const EditCategoria = (props) => {
 
     useEffect(() => {
         getCategoria();
-    }, [])
+    }, []);
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const getCategoria = async()=>{
         try {

@@ -4,8 +4,9 @@ import Loader from '../../components/Loader/Loader';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import {useUser} from 'reactfire';
 
-const Autores = () => {
+const Autores = (props) => {
     const MySwal = withReactContent(Swal)
     const [request, setRequest] = useState({
         loading:true,
@@ -15,7 +16,10 @@ const Autores = () => {
 
     useEffect(() => {
         getAutores();
-    }, [])
+    }, []);
+
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const getAutores = async()=>{
         try {

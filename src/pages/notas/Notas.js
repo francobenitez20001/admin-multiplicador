@@ -4,6 +4,7 @@ import Loader from '../../components/Loader/Loader';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useUser } from 'reactfire';
 
 const Notas = () => {
     const MySwal = withReactContent(Swal)
@@ -15,7 +16,9 @@ const Notas = () => {
 
     useEffect(() => {
         getNotas();
-    }, [])
+    }, []);
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const getNotas = async()=>{
         try {

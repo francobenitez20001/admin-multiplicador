@@ -3,9 +3,9 @@ import Loader from '../../components/Loader/Loader';
 import FormAddAutor from '../../components/forms/AddAutor';
 import { API } from "../../config";
 import Swal from 'sweetalert2';
+import { useUser } from 'reactfire';
 
 const NewAutor = (props) => {
-    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [formValues, setFormValues] = useState({
         nombre:'',
@@ -13,6 +13,8 @@ const NewAutor = (props) => {
         descripcion:'',
         twitter:''
     });
+    const user = useUser();
+    if(!user) return window.location.assign('/');
 
     const handleChange = event=>{
         setFormValues({

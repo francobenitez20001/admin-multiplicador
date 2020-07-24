@@ -26,7 +26,9 @@ const FormAddNota = (props) => {
                         <select className="form-control" name="idCategoria" onChange={props.handleChange} defaultValue={props.form.idCategoria}>
                             <option value="">Seleccione categoria</option>
                             {props.categorias.map(categoria=>(
-                                <option key={categoria.idCategoria} value={categoria.idCategoria}>{categoria.categoria}</option>
+                                <option key={categoria.idCategoria} value={categoria.idCategoria}>
+                                    {categoria.categoria}
+                                </option>
                             ))}
                         </select>
                     </div>
