@@ -5,7 +5,7 @@ const FormEditAutor = (props) => {
         (props.autor === undefined)?null:
         <div className="container mt-3">
             <Link className="btn btn-warning mb-2" to="/autores">Volver al listado</Link>
-            <h4>Modificación de Autor</h4>
+            <h4 className="my-2"><img src={props.autor.foto} alt={props.autor.nombre} style={{height:"35px",width:"35px",borderRadius:"50%"}}/><b> {props.autor.nombre} {props.autor.apellido}</b></h4>
             <form onSubmit={props.handleSubmit} id="formEditarAutor">
                 <div className="row my-3">
                     <div className="col-12 col-md-6 input-group">

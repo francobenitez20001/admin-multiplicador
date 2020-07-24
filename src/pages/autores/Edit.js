@@ -88,7 +88,8 @@ const EditAutor = (props) => {
     return (
         (request.loading)?<Loader/>:<FormEditAutor handleSubmit={handleSubmit}
                                                     handleChange={handleChange}
-                                                    autor={formValues}/>
+                                                    autor={formValues}
+                                                    />
     );
 }
  
