@@ -11,6 +11,8 @@ import EditAutor from '../pages/autores/Edit';
 import NewAutor from '../pages/autores/New';
 import EditNota from '../pages/notas/Edit';
 import NewNota from '../pages/notas/New';
+import EditCategoria from '../pages/categorias/Edit';
+import NewCategoria from '../pages/categorias/New';
 
 
 const App = () => {
@@ -26,6 +28,8 @@ const App = () => {
                     <Route exact path="/nota/edit/:id" component={EditNota}/>
                     <Route exact path="/nota/add" component={NewNota}/>
                     <Route exact path="/categorias" component={Categorias}/>
+                    <Route exact path="/categoria/edit/:id" component={EditCategoria}/>
+                    <Route exact path="/categoria/add" component={NewCategoria}/>
                     <Route exact path="/login" component={Login}/>
                 </Switch>
             </Layout>
