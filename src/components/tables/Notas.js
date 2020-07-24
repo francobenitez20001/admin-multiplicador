@@ -12,7 +12,7 @@ const TablaNotas = (props) => {
                         <th scope="col">Autor</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">
-                            <button className="btn btn-info">Nueva</button>
+                            <Link to="/nota/add" className="btn btn-info">Nueva</Link>
                         </th>
                     </tr>
                 </thead>
