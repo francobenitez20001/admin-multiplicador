@@ -74,8 +74,16 @@ const FormAddNota = (props) => {
                         </select>
                     </div>
                 </div>
-                <input type="submit" className="btn btn-info" style={{float:'right'}} value="Actualizar"/>
+                <input type="submit" className="btn btn-info mb-3" style={{float:'right'}} value="Cargar"/>
             </form>
+            <div className="d-none wrapper_resource my-5">
+                <h3 className="mt-3">Archivos de la nota </h3>
+                <form className="form-group" id="form-archivos" onSubmit={props.handleSubmitArchivos}>
+                    <input type="file" multiple name="files"/>
+                    <input type="hidden" name="idNota" id="idNota"/>
+                    <input type="submit" className="btn btn-success" style={{float:"right"}} value="Cargar"/>
+                </form>
+            </div>
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 const FormEditNota = (props) => {
     return (
-        (props.nota === undefined || props.autores === undefined || props.categorias === undefined)?null:
+        (props.nota === undefined || props.autores === undefined || props.categorias === undefined )?null:
         <div className="container mt-3">
             <Link className="btn btn-warning mb-2" to="/notas">Volver al listado</Link>
             <h4>Modificación de nota</h4>
@@ -74,8 +74,26 @@ const FormEditNota = (props) => {
                         <img src={props.nota.header} className="img-fluid" alt={props.nota.titulo}/>
                     </div>
                 </div>
-                <input type="submit" className="btn btn-info" style={{float:'right'}} value="Actualizar"/>
+                <input type="submit" className="btn btn-info mb-4" style={{float:'right'}} value="Actualizar"/>
             </form>
+            <div className="wrapper_resource my-4">
+                <h3 className="mt-3">Archivos de la nota </h3>
+                <form className="form-group" id="form-imagenes">
+                    <button type="button" className="btn btn-success" onClick={props.cargarMasImagenes}>Agregar</button>
+                    <div className="row my-5">
+                        <ul className="list-group col-12">
+                            {props.resources.length===0?<div className="alert alert-warning">Sin archivos</div>:
+                            props.resources.map(archivo=>(
+                                <li key={archivo.idArchivo} className="list-group-item">
+                                    <img src={archivo.archivo} height="40px" width="40px"/>
+                                    <i style={{float:'right',cursor:'pointer'}} onClick={()=>props.eliminarImagen(archivo.idArchivo,archivo.archivo)}  className="icono-delete mx-2 pt-2 fas fa-trash-alt"></i>
+                                    <i style={{float:'right',cursor:'pointer'}} onClick={()=>props.modificarImagen(archivo.idArchivo)}  className="icono-update mx-2 pt-2 fas fa-pen"></i>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

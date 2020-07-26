@@ -85,25 +85,54 @@ const NewNota = (props) => {
                 body:new FormData(document.getElementById('formAgregarNota'))
             }).then(res=>res.json()).then(response=>{
                 setRequest({...request,loading:false});
-                console.log(response);
+                document.getElementById('idNota').value = response.data[0].idNota;
                 Swal.fire(
                     'Listo!',
-                    response.message,
+                    'Ahora adjunta los archivos',
                     'success'
                 ).then(()=>{
-                    props.history.push('/notas');
+                        document.getElementById('formAgregarNota').classList.add('d-none');
+                        document.getElementsByTagName('h4')[0].classList.add('d-none');
+                        document.getElementsByClassName('wrapper_resource')[0].classList.remove('d-none');
                 })
             }).catch(err=>{
                 setRequest({...request,loading:false});
                 Swal.fire(
                     'Ups..',
-                    'Problemas al modificar la nota',
+                    'Problemas al insertar la nota',
                     'success'
                 );
                 console.error(err);
             })
         }
     };
+
+    const handleSubmitArchivos = event=>{
+        event.preventDefault();
+        setRequest({...request,loading:true});
+        fetch(`${API}/archivos/`,{
+            method:'POST',
+            body:new FormData(document.getElementById('form-archivos'))
+        }).then(res=>res.json()).then(response=>{
+            setRequest({...request,loading:false})
+            console.log(response);
+            Swal.fire(
+                'Listo!',
+                response.message,
+                'success'
+            ).then(()=>{
+                props.history.push('/notas');
+            })
+        }).catch(err=>{
+            setRequest({...request,loading:false});
+            Swal.fire(
+                'Ups..',
+                'Problemas al insertar la nota',
+                'success'
+            );
+            console.error(err);
+        })
+    }
 
     const validar = state=>{
         if(state.idAutor === '' || state.idCategoria === '' || state.titulo === '' || state.resumen === '' ||
@@ -115,6 +144,7 @@ const NewNota = (props) => {
 
     return (
         (request.loading)?<Loader/>:<FormAddNota   handleSubmit={handleSubmit}
+                                                    handleSubmitArchivos={handleSubmitArchivos}
                                                     handleChange={handleChange}
                                                     form={formValues}
                                                     autores={autores}
