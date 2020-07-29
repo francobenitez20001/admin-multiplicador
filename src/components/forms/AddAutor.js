@@ -6,7 +6,7 @@ const FormAddAutor = (props) => {
         <div className="container mt-3">
             <Link className="btn btn-warning mb-2" to="/autores">Volver al listado</Link>
             <h4>Nuevo Autor</h4>
-            <form onSubmit={props.handleSubmit} id="formEditarAutor">
+            <form onSubmit={props.handleSubmit} id="formAgregarAutor">
                 <div className="row my-3">
                     <div className="col-12 col-md-6 input-group">
                         <div className="input-group-prepend">
